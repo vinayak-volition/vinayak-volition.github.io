@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Safety Audit Platform Pilot v0.3 - Quick Start Guide</title>
+<style>
+body{font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#18212f;max-width:840px;margin:0 auto;padding:24px 18px 60px;background:#fff}
+h1{color:#1f3864;font-size:24px;margin:0 0 4px}h2{color:#1f3864;font-size:18px;margin:28px 0 8px;border-bottom:2px solid #dfe3ea;padding-bottom:4px}h3{color:#2f5597;font-size:15px;margin:18px 0 6px}
+.sub{color:#5f6670;margin:0 0 18px}table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}th,td{border:1px solid #c9d0db;padding:6px 8px;text-align:left;vertical-align:top}th{background:#2f5597;color:#fff}
+.note{background:#fff4d6;border-left:4px solid #e0a100;padding:10px 12px;border-radius:6px;margin:12px 0}code{background:#eef0f3;padding:1px 5px;border-radius:4px}li{margin-bottom:5px}
+</style></head><body>
+<h1>Safety Audit Platform – Pilot v0.3</h1>
+<p class="sub">Quick Start Guide · Requirement library: Fire &amp; Life Safety Audit Checklist NBC 2016 Ver3 (381 requirements: NBC 2016, IS standards, CEA Safety Regulations 2023) · Sample client programme: Decathlon EFSA</p>
+
+<h2>1. What changed from v0.2</h2>
+<table>
+<tr><th>Problem</th><th>v0.3 answer</th></tr>
+<tr><td>The checklist keeps growing as standards are added.</td><td><b>Requirement library + audit programmes.</b> All standards sit in one library. An audit uses a programme: the client's KPI set, chosen library sections, or both.</td></tr>
+<tr><td>Clients such as Decathlon audit against their own KPIs.</td><td><b>Client KPI programmes.</b> Each client KPI becomes a question, a measurement, or a link to existing library requirements. Reports are grouped by the client's KPI groups.</td></tr>
+<tr><td>Auditors page through hundreds of questions that do not apply.</td><td><b>Scoping.</b> About 15–30 yes/no building facts (height, basements, DG set, lifts, escalators…) set aside requirements that cannot apply, marked N/A with the reason. The auditor can override any of them.</td></tr>
+<tr><td>Questions are ordered by code section, not by where the auditor is standing.</td><td><b>Site walk-through.</b> Questions grouped by site area (panel room, DG set, pump room, staircases, lifts…). Switch to KPI group or code section at any time.</td></tr>
+<tr><td>Recording a compliant item takes several taps.</td><td><b>Quick answers.</b> Tap C on the question card; likelihood defaults to 1 (Rare, editable). PC, NC, NA and NV open the full question for the observation, justification and risk rating. "Mark the unanswered as Compliant" covers a whole area after checking.</td></tr>
+<tr><td>Many client KPIs are readings, not yes/no checks.</td><td><b>Measurement questions.</b> Enter one or several readings (e.g. each earth pit); the status is set from the benchmark band: compliant, partially compliant, non-compliant. Readings appear in the Word and Excel reports.</td></tr>
+</table>
+<p>Everything from v0.2 is kept: sign-in, separate Admin Console, user management, completed-audit register, admin dashboard, Word and Excel audit and closure reports, compliance score and separate risk score.</p>
+
+<h2>2. What is in this pack</h2>
+<table>
+<tr><th>File / folder</th><th>Purpose</th></tr>
+<tr><td><code>Safety_Audit_Platform_Pilot.html</code></td><td>The application (single offline file).</td></tr>
+<tr><td><code>Admin_Console.html</code></td><td>Opens the Admin Console sign-in. Keep it in the same folder.</td></tr>
+<tr><td><code>Client_KPI_Files/Decathlon_KPI_Set_SAMPLE.xlsx</code></td><td>The Decathlon KPI set in the import format: 80 Decathlon KPIs (17 measurements) and their links to library requirements. The built-in Decathlon programme is built from exactly this data.</td></tr>
+<tr><td><code>Client_KPI_Files/Client_KPI_Template.xlsx</code></td><td>Blank import template with examples and the code lists (site areas, scoping codes).</td></tr>
+<tr><td><code>Sample_Reports/</code></td><td>Word and Excel audit and closure reports from a sample Decathlon audit (invented data).</td></tr>
+<tr><td><code>Checklist/</code></td><td>Ver3 checklist workbook used as the requirement library.</td></tr>
+<tr><td><code>Source/</code></td><td>Source code, the data build script and the build script.</td></tr>
+</table>
+
+<h2>3. First-time setup</h2>
+<ol>
+<li>Open <code>Admin_Console.html</code>. On a new device it shows <b>First-time setup</b>: create the System Administrator account.</li>
+<li><b>Users → Create user</b> for each auditor, reviewer, Audit Administrator and management user (temporary password; they change it at first sign-in).</li>
+<li><b>Programmes</b>: two are ready: <i>Decathlon – Electrical &amp; Fire Safety Audit (sample)</i> with 168 questions, and the full <i>Requirement library</i> with 381.</li>
+<li>To try it at once: <b>Data → Sample: Decathlon store</b> creates a scoped and completed sample audit.</li>
+</ol>
+
+<h2>4. Running an audit</h2>
+<ol>
+<li><b>Create</b> (Audit Administrator, in the audit application): New audit → choose the programme, lead auditor and team.</li>
+<li><b>Scope</b>: the app opens the scoping screen. Answer the building facts (Yes / No / ? for unknown). The counter shows how many questions will be set aside. Tap <b>Apply scoping</b>. You can come back and change answers at any time; requirements return to the audit if a fact changes.</li>
+<li><b>Walk-through</b>: pick a site area. For each card:
+  <ul><li><b>C</b>: recorded at once (likelihood 1 by default; open the card to change).</li>
+  <li><b>PC / NC</b>: opens the question for observation, likelihood, recommendation, photos.</li>
+  <li><b>NA</b>: opens for the justification. <b>NV</b>: opens for the reason.</li>
+  <li><b>Reading</b> cards: open and enter readings; add rows for several points (e.g. Pit 1, Pit 2). The status follows the benchmark; you can set it manually, and "use result" restores the automatic status.</li></ul></li>
+<li>Out-of-scope cards are hidden; tick "Show out-of-scope" in an area to see or override them.</li>
+<li><b>Submit</b>, review (optional), reports and closure work as in v0.2.</li>
+</ol>
+
+<h2>5. Creating a programme for another client</h2>
+<ol>
+<li>Admin Console → <b>Programmes → Download client KPI file template</b>.</li>
+<li>One row per client KPI. <b>Type</b>: <i>Check</i> (yes/no requirement), <i>Measurement</i> (numeric reading with compliant and partial bands), or <i>Library item</i> (fully covered by library requirement(s) in <b>Library refs</b>, e.g. P-16). Optional: severity, site area code, "applies when" scoping codes, reference, guidance.</li>
+<li>Programmes → <b>New programme</b>: name, client, choose the KPI file and, if wanted, whole library sections to add. Create, review, then <b>Activate</b>.</li>
+<li>Any question can be edited (wording, severity, weight, site area, scoping codes, measurement limits) until the programme is used by an audit. After that, use <b>New version</b>.</li>
+</ol>
+
+<h2>6. Scoring</h2>
+<p>Unchanged from v0.2. <b>Compliance %</b> = Σ(credit × weight) ÷ Σ(weight) over C, PC and NC; N/A (including out-of-scope) and NV are excluded. Overall rating from compliance alone: Satisfactory ≥ 90%, Needs improvement ≥ 75%, Unsatisfactory ≥ 50%, Unsafe below 50%. <b>Risk</b> = Severity × Likelihood for every applicable question, graded Low / Medium / High / Critical. Reports add compliance by site area, a measured-parameters table and the scoping answers.</p>
+
+<h2>7. Points to confirm in the Decathlon sample</h2>
+<div class="note">
+<ul>
+<li><b>Benchmarks marked "to be confirmed"</b> come from the Decathlon reports or are auditor suggestions: 230 V ±6%, 415 V ±10%, phase imbalance ≤ 10%, power factor ≥ 0.95, THD-i ≤ 15%, THD-v ≤ 8%, N–E voltage &lt; 1 V, panel room lighting ≥ 450 lux, 8–15 ACH, 23–25 °C. Earth pits use the Ver3 auditor benchmark (≤ 2 Ω compliant, ≤ 5 Ω partially compliant). Thermography, room temperature, neutral current and ARD battery readings are recorded without limits.</li>
+<li><b>Severities of the Decathlon KPIs</b> are my proposal (4 for earthing, shock, lift rescue and escalator stop items; 2 for energy and comfort items; 3 otherwise).</li>
+<li><b>Site areas</b> for the 381 library requirements were assigned automatically from section and wording, and <b>scoping rules</b> from the Applicability column (181 requirements). Requirements whose applicability depends on judgement (for example "where provided", occupancy lists) are left for the auditor.</li>
+<li>Six Decathlon KPIs are now covered by Ver3 Section P and appear as those library items (PPE P-17, rubber mats P-16, danger notices P-15, colour coding P-12, temporary cables P-08, source identification P-19).</li>
+</ul></div>
+
+<h2>8. Pilot limitations</h2>
+<ul>
+<li>No server: each device has its own users and data; back up from Admin Console → Data. Data is not encrypted; protect devices with a screen lock.</li>
+<li>Several auditors work on separate devices and merge audit packages (More → Export / Merge).</li>
+<li>Camera capture, downloads and tablet/desktop layouts should be checked on your own devices before field use.</li>
+</ul>
+</body></html>
